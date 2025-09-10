@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electricity Calculations App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jQuery & jQuery Mobile -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    .result-box {
+      background: #e0f7fa;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 8px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Page 1: Information Page ===== -->
+<div data-role="page" id="infoPage">
+  <div data-role="header">
+    <h1>Electricity Info</h1>
+  </div>
+
+  <div role="main" class="ui-content">
+    <h2>Basic Definitions</h2>
+    <ul>
+      <li><strong>Voltage (V):</strong> Electrical potential difference, in volts.</li>
+      <li><strong>Current (I):</strong> Flow of electric charge, in amperes (A).</li>
+      <li><strong>Resistance (R):</strong> Opposition to current flow, in ohms (Ω).</li>
+      <li><strong>Power (P):</strong> Rate of energy usage, in watts (W).</li>
+      <li><strong>Energy (E):</strong> Electricity consumed, in kilowatt-hours (kWh).</li>
+    </ul>
+
+    <h3>Formulas</h3>
+    <p><mark>V = I × R</mark> (Ohm’s Law)</p>
+    <p><mark>P = V × I</mark> (Power)</p>
+    <p><mark>E = P × t</mark> (Energy)</p>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#infoPage" class="ui-btn-active">Info</a></li>
+        <li><a href="#interfacePage">Interface</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Page 2: Interface Page ===== -->
+<div data-role="page" id="interfacePage">
+  <div data-role="header">
+    <h1>Electricity Interface</h1>
+  </div>
+
+  <div role="main" class="ui-content">
+    <form>
+      <label for="voltage">Voltage (V):</label>
+      <input type="number" id="voltage" placeholder="Enter voltage">
+
+      <label for="current">Current (I):</label>
+      <input type="number" id="current" placeholder="Enter current">
+
+      <label for="resistance">Resistance (R):</label>
+      <input type="number" id="resistance" placeholder="Enter resistance">
+
+      <label for="power">Power (P):</label>
+      <input type="number" id="power" placeholder="Enter power">
+
+      <label for="time">Time (t in hours):</label>
+      <input type="number" id="time" placeholder="Enter time">
+
+      <button type="button" id="showValues">Show Input Values</button>
+    </form>
+
+    <div id="output" class="result-box"></div>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#infoPage">Info</a></li>
+        <li><a href="#interfacePage" class="ui-btn-active">Interface</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#showValues").click(function(){
+      let v = $("#voltage").val();
+      let i = $("#current").val();
+      let r = $("#resistance").val();
+      let p = $("#power").val();
+      let t = $("#time").val();
+
+      $("#output").html(
+        "<strong>Entered Values:</strong><br>" +
+        "Voltage: " + v + " V<br>" +
+        "Current: " + i + " A<br>" +
+        "Resistance: " + r + " Ω<br>" +
+        "Power: " + p + " W<br>" +
+        "Time: " + t + " hours"
+      );
+    });
+  });
+</script>
+
+</body>
+</html>
